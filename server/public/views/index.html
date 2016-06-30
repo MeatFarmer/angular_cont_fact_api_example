@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Angular Controllers, Factory, and API</title>
+        <link rel="stylesheet" href="vendors/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/style.css">
+
+        <script type="text/javascript" src="vendors/angular.min.js"></script>
+        <script type="text/javascript" src="assets/client.js"></script>
+    </head>
+
+
+    <body>
+        <div >
+            <div ng-controller="myController" class="search col-md-6">
+                <h1>Search Movies</h1>
+                <input type="text" ng-model="search">
+                <button ng-click="searchMovie()">Search</button>
+                <div ng-show="data.results" class="movie">
+
+                    <h3>
+                        {{ data.results.Title }}
+                    </h3>
+                    <p>
+                        {{ data.results.Rated }}
+                    </p>
+                    <p>
+                        {{ data.results.Released }}
+                    </p>
+                    <p class="small plot">
+                        {{ data.results.Plot }}
+                    </p>
+                    <button ng-click="addFavorite(data.results)">Add to Fav</button>
+                </div>
+            </div>
+
+            <div ng-controller="myOtherController" class="favorites col-md-6">
+                <h1>Favorite Movies</h1>
+                <div ng-repeat="movie in favorites" class="movie-list">
+                    <p class="lead">{{movie.Title}} / {{movie.Rated}} / {{ movie.Runtime }}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
